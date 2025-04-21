@@ -34,4 +34,4 @@ jobs:
         with:
           token: ${{ secrets.MY_GITHUB_TOKEN }}  # GitHub Token here
           branch: gh-pages
-          folder: lab5_WAS/dist/lab5-was
+          folder: lab5_WAS/dist/lab5-was/browser
