@@ -32,6 +32,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # Use your GitHub Token here
+          github_token: ${{ secrets.MY_GITHUB_TOKEN }}  # Use your GitHub Token here
           branch: gh-pages
           folder: lab5_WAS/dist/lab5-was
