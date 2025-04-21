@@ -22,15 +22,18 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-        working-directory: lab5_WAS
+        working-directory: lab5_WAS/lab5_WAS # Update this path
 
       - name: Build Angular App
         run: npm run build -- --base-href=/lab5_WAS/
-        working-directory: lab5_WAS
+        working-directory: lab5_WAS/lab5_WAS # Update this path
+
+      - name: Check build folder
+        run: ls -alh lab5_WAS/lab5_WAS/dist/lab5-was # Verify the build folder
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: lab5_WAS/dist/lab5-was
+          folder: lab5_WAS/lab5_WAS/dist/lab5-was # Update this path
           token: ${{ secrets.GITHUB_TOKEN }}
