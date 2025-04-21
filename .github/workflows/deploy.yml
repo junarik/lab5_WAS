@@ -32,6 +32,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages   # Гілка, в яку буде деплой
-          folder: lab5_WAS/dist/lab5-was  # Каталог з результатами build
-          token: ${{ secrets.GITHUB_TOKEN }}  # Токен доступу для GitHub
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # Use your GitHub Token here
+          branch: gh-pages
+          folder: lab5_WAS/dist/lab5-was
