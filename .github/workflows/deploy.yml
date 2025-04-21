@@ -33,3 +33,4 @@ jobs:
         with:
           folder: lab5_WAS/dist/lab5-was
           branch: gh-pages
+          token: ${{ secrets.GITHUB_TOKEN }}
