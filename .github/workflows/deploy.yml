@@ -1,36 +1,20 @@
-name: Deploy
+- name: Setup Node.js
+  uses: actions/setup-node@v3
+  with:
+    node-version: "18"
+    cache: "npm"
+    cache-dependency-path: lab5_WAS/package-lock.json
 
-on:
-  push:
-    branches:
-      - main
+- name: Install dependencies
+  run: npm ci
+  working-directory: lab5_WAS
 
-jobs:
-  deploy:
-    name: Deploy to GitHub Pages
-    runs-on: ubuntu-latest
+- name: Build Angular App
+  run: npm run build -- --base-href=/lab5_WAS/
+  working-directory: lab5_WAS
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "18"
-          cache: "npm"
-          cache-dependency-path: lab5_WAS/lab5_WAS/package-lock.json
-      
-      - name: Install dependencies
-        run: npm ci
-        working-directory: lab5_WAS/lab5_WAS
-      
-      - name: Build Angular App
-        run: npm run build -- --base-href=/lab5_WAS/
-        working-directory: lab5_WAS/lab5_WAS
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: lab5_WAS/lab5_WAS/dist/lab5-was
+- name: Deploy to GitHub Pages
+  uses: peaceiris/actions-gh-pages@v3
+  with:
+    github_token: ${{ secrets.GITHUB_TOKEN }}
+    publish_dir: lab5_WAS/dist/lab5-was
