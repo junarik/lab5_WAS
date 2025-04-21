@@ -11,14 +11,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "18"
           cache: "npm"
-          cache-dependency-path: lab5_WAS/package-lock.json
 
       - name: Install dependencies
         run: npm ci
@@ -31,6 +31,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: lab5_WAS/dist/lab5-was
           branch: gh-pages
+          folder: lab5_WAS/dist/lab5-was
           token: ${{ secrets.GITHUB_TOKEN }}
