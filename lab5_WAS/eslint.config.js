@@ -6,6 +6,15 @@ const angular = require("angular-eslint");
 module.exports = tseslint.config(
   {
     files: ["**/*.ts"],
+    languageOptions: {
+      globals: {
+        describe: "readonly",
+        it: "readonly",
+        expect: "readonly",
+        beforeEach: "readonly",
+        afterEach: "readonly",
+      },
+    },
     extends: [
       eslint.configs.recommended,
       ...tseslint.configs.recommended,
@@ -16,7 +25,7 @@ module.exports = tseslint.config(
     rules: {
       "no-unused-vars": "warn",
       "no-undef": "warn",
-      "no-console": "error",
+      "no-console": ["error", { "allow": ["warn", "error"] }],
       "@angular-eslint/directive-selector": [
         "error",
         {
