@@ -30,7 +30,8 @@ jobs:
         working-directory: lab5_WAS
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: lab5_WAS/dist/lab5-was
+          branch: gh-pages   # Гілка, в яку буде деплой
+          folder: lab5_WAS/dist/lab5-was  # Каталог з результатами build
+          token: ${{ secrets.GITHUB_TOKEN }}  # Токен доступу для GitHub
