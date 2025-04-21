@@ -20,12 +20,15 @@ jobs:
         with:
           node-version: '18'
           cache: 'npm'
+          cache-dependency-path: lab5_WAS/package-lock.json
 
       - name: Install dependencies
         run: npm ci
+        working-directory: lab5_WAS
 
       - name: Run ESLint
         run: npm run lint
+        working-directory: lab5_WAS
 
   test:
     name: Run Tests
@@ -38,12 +41,15 @@ jobs:
         with:
           node-version: '18'
           cache: 'npm'
+          cache-dependency-path: lab5_WAS/package-lock.json
 
       - name: Install dependencies
         run: npm ci
+        working-directory: lab5_WAS
 
       - name: Run tests (ChromeHeadless)
         run: npm run test -- --watch=false --browsers=ChromeHeadless
+        working-directory: lab5_WAS
 
   build:
     name: Build Angular App
@@ -57,12 +63,15 @@ jobs:
         with:
           node-version: '18'
           cache: 'npm'
+          cache-dependency-path: lab5_WAS/package-lock.json
 
       - name: Install dependencies
         run: npm ci
+        working-directory: lab5_WAS
 
       - name: Build the project
         run: npm run build -- --base-href=/lab5_WAS/
+        working-directory: lab5_WAS
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
