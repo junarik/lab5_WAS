@@ -19,7 +19,8 @@ jobs:
         with:
           node-version: "18"
           cache: "npm"
-          cache-dependency-path: lab5_WAS/lab5_WAS/package-lock.json
+          cache-dependency-path: package-lock.json
+        working-directory: lab5_WAS/lab5_WAS
       
       - name: Install dependencies
         run: npm ci
