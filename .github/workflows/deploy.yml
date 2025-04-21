@@ -19,22 +19,23 @@ jobs:
         with:
           node-version: "18"
           cache: "npm"
-      
-      - name: List repository contents
-        run: ls -la
+          cache-dependency-path: lab5_WAS/package-lock.json
       
       - name: Install dependencies
         run: npm ci
+        working-directory: lab5_WAS
       
       - name: Build Angular App
         run: npm run build -- --base-href=/lab5_WAS/
+        working-directory: lab5_WAS
       
       - name: Check build folder
         run: ls -la dist/lab5-was
+        working-directory: lab5_WAS
       
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: dist/lab5-was
+          folder: lab5_WAS/dist/lab5-was
           token: ${{ secrets.GITHUB_TOKEN }}
